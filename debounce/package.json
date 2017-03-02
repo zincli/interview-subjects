@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "test": "mocha -r ../test-setup.js ./"
+    "test": "mocha -R dot -r ../test-setup.js ./"
   }
 }
