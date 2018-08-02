@@ -14,5 +14,16 @@
  * @return {Function}      - debounced fn
  */
 module.exports = (fn, wait) => {
-
+  let time = null;
+  let args = arguments;
+  
+  if(fn instanceof Function) {
+    return function () {
+      clearTimeout(time);
+      time = setTimeout(function () {
+        fn(args);
+      },wait);
+    }
+  }
+  
 };
