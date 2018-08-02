@@ -15,21 +15,15 @@
  */
 module.exports = (fn, wait = 32) => {
   let time = null;
-  // let context = this;
-  let args = arguments;
   if(fn instanceof Function) {
     return function () {
-      
+      let args = arguments;
       clearTimeout(time);
+      let _this = this;
       time = setTimeout(function () {
-        // fn.apply(context,test);
-        fn(args);
+        fn.apply(_this,args);
       },wait);
     }
   }
-  
 };
 
-function fn(){
-  console.log(123);
-}

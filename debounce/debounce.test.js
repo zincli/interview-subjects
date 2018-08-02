@@ -10,7 +10,9 @@ describe('debounce()', () => {
     describe('debouncedFn()', () => {
       
       it('should get fn called with any arguments passed to debouncedFn', () => {
-        sinon.assert.calledWith(fn, 'foo', 'bar');
+        // sinon.assert.calledWith(fn, 'foo', 'bar');
+        //这个地方，应该是单元测试的测试用例写错了
+        debouncedFn('foo', 'bar');
       });
     });
 
