@@ -45,7 +45,19 @@ describe('debounce()', () => {
       beforeEach(() => {
         fn.reset();
       });
-
+      it('should get fn called once only until 32ms passed away after this call', () => {
+        debouncedFn('foo', 'bar');
+        sinon.assert.notCalled(fn);
+    
+        return Promise.all([
+          delay(() => {
+            sinon.assert.notCalled(fn);
+          }, 16),
+          delay(() => {
+            sinon.assert.calledOnce(fn);
+          }, 64),
+        ]);
+      });
       it('should get fn called 3 times after all', () => {
         debouncedFn();
         delay(debouncedFn, 48);
@@ -58,19 +70,7 @@ describe('debounce()', () => {
     
     });
   
-   /* it('should get fn called once only until 32ms passed away after this call', () => {
-      debouncedFn('foo', 'bar');
-      sinon.assert.notCalled(fn);
-    
-      return Promise.all([
-        delay(() => {
-          sinon.assert.notCalled(fn);
-        }, 16),
-        delay(() => {
-          sinon.assert.calledOnce(fn);
-        }, 64),
-      ]);
-    });*/
+  
   });
 });
 

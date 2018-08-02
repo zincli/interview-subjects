@@ -13,17 +13,23 @@
  * @param  {Number}   wait - debounce limited
  * @return {Function}      - debounced fn
  */
-module.exports = (fn, wait) => {
+module.exports = (fn, wait = 32) => {
   let time = null;
+  // let context = this;
   let args = arguments;
-  
   if(fn instanceof Function) {
     return function () {
+      
       clearTimeout(time);
       time = setTimeout(function () {
+        // fn.apply(context,test);
         fn(args);
       },wait);
     }
   }
   
 };
+
+function fn(){
+  console.log(123);
+}
