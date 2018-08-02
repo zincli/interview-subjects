@@ -1,2 +1,12 @@
 # npm
 node_modules
+.idea/interview-subjects.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+.idea/vcs.xml
+package-lock.json
+.idea
+ss2.js
+ss3.js
+index.html
